@@ -28,44 +28,20 @@ camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight,
 scene = new THREE.Scene();
 
 //LIGHTS
-var light = new THREE.AmbientLight(0xffffff, 0.8);
+var light = new THREE.AmbientLight(0xffffff, 1);
 scene.add(light);
 
-var light2 = new THREE.PointLight(0xffffff, 1.5, -20);
-scene.add(light2);
-light2.position.set(50, 50, 50);
+
 
 var loader = new THREE.GLTFLoader();
 
-loader.load('lingon.glb', handle_load);
-loader.load('gubbar2.glb', handle_load2);
+loader.load('snackor3.glb', handle_load);
 
 
 
-var mesh2
+
+
 var mesh;
-
-function handle_load(gltf) {
-
-  console.log(gltf);
-  mesh = gltf.scene;
-  console.log(mesh.children[0]);
-  mesh.children[0].material = new THREE.MeshLambertMaterial();
-  scene.add(mesh);
-  mesh.position.z = 0;
-  mesh.position.y = -5;
-}
-
-function handle_load2(gltf, num) {
-
-  console.log(gltf);
-  mesh2 = gltf.scene;
-  console.log(mesh2.children[0]);
-  mesh2.children[0].material = new THREE.MeshLambertMaterial();
-  scene.add(mesh2);
-  mesh2.position.z = 0;
-  mesh2.position.y = -5;
-}
 
 function handle_load(gltf) {
 
@@ -83,7 +59,14 @@ function handle_load(gltf) {
 //Controlls
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-camera.position.set(0, 0, 20);
+camera.position.set(12, 8, 22);
+camera.rotation.set(
+
+  -0.34751610145038664,
+
+  0.4892464794221476,
+
+  0.16861119791985155)
 controls.update();
 
 //RENDER LOOP
