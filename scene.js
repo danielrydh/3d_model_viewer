@@ -32,6 +32,36 @@ var light = new THREE.AmbientLight(day, 1);
 
 scene.add(light);
 
+let skyboxGeo = new THREE.BoxGeometry(100, 100, 100);
+const ft = new THREE.TextureLoader().load("ft.jpg");
+const a1 = new THREE.MeshBasicMaterial({ map: ft, side: THREE.BackSide });
+
+const bk = new THREE.TextureLoader().load("bk.jpg");
+const a2 = new THREE.MeshBasicMaterial({ map: bk, side: THREE.BackSide });
+
+const up = new THREE.TextureLoader().load("up.jpg");
+const a3 = new THREE.MeshBasicMaterial({ map: up, side: THREE.BackSide });
+
+const dn = new THREE.TextureLoader().load("dn.jpg");
+const a4 = new THREE.MeshBasicMaterial({ map: dn, side: THREE.BackSide });
+
+const rt = new THREE.TextureLoader().load("rt.jpg");
+const a5 = new THREE.MeshBasicMaterial({ map: rt, side: THREE.BackSide });
+
+const lf = new THREE.TextureLoader().load("lf.jpg");
+const a6 = new THREE.MeshBasicMaterial({ map: lf, side: THREE.BackSide });
+var materialArray = [a1,a2,a3,a4,a5,a6]
+let skybox = new THREE.Mesh(skyboxGeo, materialArray);
+skybox.rotation.y += 1.2;
+scene.add(skybox);
+
+const light2 = new THREE.PointLight( 0xF2F2CE, 2, 100 );
+light2.position.set( 50, 50, 20 );
+scene.add( light2 );
+
+const light3 = new THREE.PointLight( 0xF2F2CE, 1, 100 );
+light2.position.set( 50, 20, 30 );
+scene.add( light3 );
 
 
 var loader = new THREE.GLTFLoader();
@@ -60,14 +90,16 @@ function handle_load(gltf) {
 //Controlls
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-camera.position.set(12, 8, 22);
+camera.position.set(22.5, -1.53, 10.9);
 camera.rotation.set(
 
-  -0.34751610145038664,
+ 
+  0.139,
 
-  0.4892464794221476,
+  1.116,
 
-  0.16861119791985155)
+  -0.1257,
+)
 controls.update();
 
 //RENDER LOOP
